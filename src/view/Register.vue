@@ -34,6 +34,7 @@
             </template>
         </van-field>
         <van-button class="btn" type="info" @click="submit()">立即注册</van-button>
+        <p class="dy-login"><router-link to="/login">已有账号？立即登录</router-link></p>
       </van-cell-group>
     </div>
   </div>
@@ -165,7 +166,7 @@ export default {
   width: 95%;
   border: 1px solid #eee;
   border-radius: 3px;
-  margin: 0.5rem auto;
+  margin: 0.1rem auto;
   padding: 0.2rem;
   box-sizing: border-box;
   h4{
@@ -186,6 +187,10 @@ export default {
   }
   .van-image{
       width: 3rem;
+  }
+  .dy-login{
+      text-align: center;
+      margin-top: 15px;
   }
 }
 </style>
