@@ -1,4 +1,5 @@
 import axios from 'axios'
+import store from '@/store'
 
 //create方法创建一个axios的实例
 const Server=axios.create({
@@ -8,6 +9,7 @@ const Server=axios.create({
 
 //使用server方法创建请求拦截器，请求发送出去之前执行的
 Server.interceptors.response.use(function(config){
+    store.state.isLoading = true
     return config
 },function(err){
     return Promise.reject(err)

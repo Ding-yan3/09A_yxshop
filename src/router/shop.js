@@ -9,27 +9,42 @@ const shop=[
     {
         path:'/register',
         name:"Register",
-        component:Register
+        component:Register,
+        meta:{
+            title:"注册"
+        }
     },
     {
         path:'/login',
         name:"Login",
-        component:Login
+        component:Login,
+        meta:{
+            title:"登录"
+        }
     },
     {
         path:"/kan",
         name:"Kan",
-        component:Kan
+        component:Kan,
+        meta:{
+            title:"砍价列表"
+        }
     },
     {
         path:"/special",
         name:"Special",
-        component:Special
+        component:Special,
+        meta:{
+            title:"严选专栏"
+        }
     },
     {
         path:"/allist",
         name:"Allist",
-        component:Allist
+        component:Allist,
+        meta:{
+            title:"人气推荐"
+        }
     }
 ];
 

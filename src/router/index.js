@@ -23,23 +23,32 @@ export default new Router({
           name:"Home",
           component:Home,
           meta:{
-            title:"严选商城-首页"
+            title:"首页"
           },
         },
         {
           path:"fei",
           name:"Fei",
-          component:Fei
+          component:Fei,
+          meta:{
+            title:"分类"
+          }
         },
         {
           path:"shop",
           name:"Shop",
-          component:Shop
+          component:Shop,
+          meta:{
+            title:"购物车"
+          }
         },
         {
           path:"person",
           name:"Person",
-          component:Person
+          component:Person,
+          meta:{
+            title:"我的"
+          }
         }
       ]
     },

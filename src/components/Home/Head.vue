@@ -73,10 +73,10 @@ export default {
     background: #fff;
     position: absolute;
     top: 261px;
-    right: 0;
+    right: 0px;
     width: 100%;
     height: 100px;
-    border-radius: 40px 40px 0px 0px;
+    border-radius: 25% 25% 0 0;
     left: 0;
     justify-content: space-around;
     align-items: center;

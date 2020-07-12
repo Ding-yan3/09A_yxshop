@@ -18,6 +18,17 @@ Vue.prototype.$axios=axios //将对象挂载原型上
 //全局使用
 Vue.component("Loading",Loading)
 
+//全局路由守卫,进入组件之前触发
+router.beforeEach((to,from, next)=>{ 
+  //判断路由是否设置title值，给组件添加标题内容
+  if(to.hasOwnProperty("meta")){
+    document.title = to.meta.title;
+  }
+
+
+  next();
+});
+
 // 全局自定义指令
 Vue.directive("jump",(el,{ value },vnode,oldNode)=>{
   el.onclick = ()=>{
