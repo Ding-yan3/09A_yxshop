@@ -128,6 +128,9 @@ export default {
     position: absolute;
     top: 40px;
     left: 90px;
+    width: 10px;
+    height: 10px;
+    line-height: 10px;
   }
 }
 .dy-lun {
@@ -177,9 +180,11 @@ export default {
     height: 160px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
     li{
         width: 33%;
         text-align: center;
+        margin-top: 5px;
     }
 }
 .dy-zhu{

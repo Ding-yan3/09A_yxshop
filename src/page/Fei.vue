@@ -5,33 +5,31 @@
     </div>
     <div class="dy-box">
       <div class="dy-left">
-        <van-sidebar v-model="activeKey">
-          <van-sidebar-item title="所有分类" @click="change(0)" />
-          <van-sidebar-item
-            @click="change(item.id)"
-            v-for="(item,index) in dy_List"
-            v-show="item.pid==0"
-            :key="index"
-            :title="item.name"
-          />
-        </van-sidebar>
-      </div>
-      <div class="dy-right">
-        <van-swipe
-          class="my-swipe"
-          :autoplay="3000"
+        <van-tree-select
+          @click-nav="changeLeft"
+          height="165vw"
+          :items="dy_List"
+          :main-active-index.sync="active"
         >
-          <van-swipe-item v-for="(item,index) in dy_img" :key="index">
-            <img :src="item" alt />
-          </van-swipe-item>
-        </van-swipe>
-
-        <ul>
-          <li v-for="(item,index) in search" :key="index">
-            <img :src="item.icon" alt />
-            <p>{{item.name}}</p>
-          </li>
-        </ul>
+          <template #content>
+            <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+              <van-swipe-item v-for="(item,index) in dy_img" :key="index">
+                <img :src="item" alt="">
+              </van-swipe-item>
+            </van-swipe>
+            <div class="dy-right">
+              <div
+                class="dy-item"
+                v-for="(item,index) in search"
+                :key="index"
+                @click="jump(item.id)"
+              >
+                <img :src="item.icon" alt="无图片" />
+                <p>{{item.name}}</p>
+              </div>
+            </div>
+          </template>
+        </van-tree-select>
       </div>
     </div>
   </div>
@@ -43,9 +41,10 @@ export default {
   data() {
     return {
       activeKey: 0,
-      dy_List: [],
-      dy_active: 0,
-      pid: 0,
+      dy_List: [{ text: "所有分类" }],
+      cateIds: [0],
+      active: 0,
+      dy_cate: [],
       dy_img: [
         "static/image/f3.jpg",
         "static/image/f.jpg",
@@ -57,31 +56,45 @@ export default {
   props: [],
   components: {},
   mounted() {
-    this.$axios
-      .get("https://api.it120.cc/small4/shop/goods/category/all")
-      .then(res => {
-        console.log(res.data.data);
-        this.dy_List = res.data.data;
-      });
+    this.getList();
   },
   methods: {
-    change(id) {
-      this.pid = id;
+    changeLeft(index) {
+      console.log(this.cateIds[index]);
+    },
+    getList() {
+      this.$axios({
+        url: "https://api.it120.cc/small4/shop/goods/category/all"
+      }).then(res => {
+        console.log(res.data.data);
+        this.dy_cate = res.data.data;
+        res.data.data.forEach(item => {
+          if (item.pid == 0) {
+            this.dy_List.push({ text: item.name });
+            this.cateIds.push(item.id);
+          }
+        });
+      });
+    },
+    jump(id) {
+      this.$router.push({
+        path: "/fei/detail",
+        query: {
+          id: id
+        }
+      });
     }
   },
   computed: {
     search() {
-      if (this.pid == 0) {
-        return this.dy_List;
-      } else {
-        var dy_arr = [];
-        this.dy_List.forEach(item => {
-          if (item.pid == this.pid) {
-            dy_arr.push(item);
-          }
-        });
+      let dy_arr = this.dy_cate;
+      if (this.active == 0) {
         return dy_arr;
       }
+
+      return dy_arr.filter(item => {
+        return item.pid == this.cateIds[this.active];
+      });
     }
   }
 };
@@ -105,33 +118,37 @@ export default {
   }
 }
 .dy-box {
-  display: flex;
-  .dy-right {
-    padding-bottom: 60px;
+  // display: flex;
+  .dy-left {
     .my-swipe,.van-swipe-item{
-      width: 220px;
-      border-radius: 5px;
-      margin: 0 auto;
+      width: 95%;
+      // margin-left: 10px;
+      height: 150px;
+      border-radius: 4px;
       img{
         width: 100%;
-        height: 120px;
-        border-radius: 5px;
+        border-radius: 4px;
+        height: 130px;
       }
     }
-    ul {
+    .dy-right {
+      max-height: 85%;
+      overflow: auto;
+      position: fixed;
       display: flex;
       flex-wrap: wrap;
-      li {
-        text-align: center;
-        margin-top: 10px;
-        margin-left: 5px;
+      .dy-item {
+        width: 28%;
+        height: 90px;
         img {
-          width: 80px;
-          height: 80px;
+          width: 90%;
+          margin: 1%；;
         }
         p {
-          font-size: 13px;
-          margin-top: 5px;
+          line-height: 0.6rem;
+          width: 90%;
+          text-align: center;
+          font-size: 12px;
         }
       }
     }

@@ -3,6 +3,7 @@ import Login from '@/view/Login.vue'
 import Kan from '@/components/Kan'
 import Special from '@/components/Special'
 import Allist from '@/components/Allist'
+import Detail from '@/components/Fei/Detail.vue'
 
 //定义一个变量
 const shop=[
@@ -44,6 +45,14 @@ const shop=[
         component:Allist,
         meta:{
             title:"人气推荐"
+        }
+    },
+    {
+        path:"/fei/detail",
+        name:"Detail",
+        component:Detail,
+        meta:{
+            title:"分类商品"
         }
     }
 ];
