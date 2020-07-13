@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import storage from '@/Utils/localstorsge'
 export default {
   name: "",
   data() {
