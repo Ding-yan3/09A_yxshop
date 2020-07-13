@@ -4,6 +4,8 @@ import Kan from '@/components/Kan'
 import Special from '@/components/Special'
 import Allist from '@/components/Allist'
 import Detail from '@/components/Fei/Detail.vue'
+import Search from '@/components/Fei/Search.vue'
+import Artical from '@/components/Artical'
 
 //定义一个变量
 const shop=[
@@ -53,6 +55,22 @@ const shop=[
         component:Detail,
         meta:{
             title:"分类商品"
+        }
+    },
+    {
+        path:"/fei/search",
+        name:"Search",
+        component:Search,
+        meta:{
+            title:"搜索"
+        }
+    },
+    {
+        path:"/special/artiacl",
+        name:"Artical",
+        component:Artical,
+        meta:{
+            title:"专栏详情"
         }
     }
 ];

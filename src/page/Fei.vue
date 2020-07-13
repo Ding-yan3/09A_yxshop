@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="dy-head">
-      <input type="text" placeholder="回车搜索商品" />
+      <input type="text" @keydown.enter="Scer()" placeholder="回车搜索商品" />
     </div>
     <div class="dy-box">
       <div class="dy-left">
@@ -83,6 +83,9 @@ export default {
           id: id
         }
       });
+    },
+    Scer(){
+      this.$router.push({path:"/fei/search"})
     }
   },
   computed: {

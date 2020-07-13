@@ -6,7 +6,7 @@
         <span>严选专栏</span>
       </p>
       <ul>
-        <li v-for="(item,index) in dy_List" :key="index">
+        <li v-for="(item,index) in dy_List" :key="index" @click="toggle(item.id)">
           <img :src="item.pic" alt />
           <div>
             <p>{{item.title}}</p>
@@ -40,6 +40,9 @@ export default {
       this.$router.push({
         path: "/"
       });
+    },
+     toggle(id){
+      this.$router.push("/special/artiacl?id="+id)
     }
   }
 };

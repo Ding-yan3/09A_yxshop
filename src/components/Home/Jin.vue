@@ -3,7 +3,7 @@
     <div class="dy-list">
       <p @click="jump()">精选专题 ></p>
       <van-swipe :show-indicators="dy_flag" :loop="false" :width="320">
-        <van-swipe-item v-for="(item,index) in dy_List" :key="index">
+        <van-swipe-item v-for="(item,index) in dy_List" :key="index" @click="toggle(item.id)">
           <img :src="item.pic" alt />
           <p>{{item.title}}</p>
           <p>{{item.descript}}</p>
@@ -35,6 +35,9 @@ export default {
       this.$router.push({
         path:"/special"
       })
+    },
+    toggle(id){
+      this.$router.push("/special/artiacl?id="+id)
     }
   }
 };

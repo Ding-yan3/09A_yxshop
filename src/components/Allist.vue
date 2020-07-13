@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="dy-box">
-      <p>
+      <!-- <p>
         <span @click="back">&lt;</span>
         <span>人气推荐</span>
-      </p>
+      </p> -->
       <ul>
         <li v-for="(item,index) in dy_List" :key="index">
           <img :src="item.pic" alt />
