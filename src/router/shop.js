@@ -6,6 +6,7 @@ import Allist from '@/components/Allist'
 import Detail from '@/components/Fei/Detail.vue'
 import Search from '@/components/Fei/Search.vue'
 import Artical from '@/components/Artical'
+import Renqi from '@/components/Home/Renqi.vue'
 
 //定义一个变量
 const shop=[
@@ -71,6 +72,14 @@ const shop=[
         component:Artical,
         meta:{
             title:"专栏详情"
+        }
+    },
+    {
+        path:"/tui/renqi",
+        name:"Renqi",
+        component:Renqi,
+        meta:{
+            title:"商品详情"
         }
     }
 ];
