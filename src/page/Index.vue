@@ -4,7 +4,7 @@
     <van-tabbar v-model="active" active-color="red">
       <van-tabbar-item icon="wap-home-o" to="/home">首页</van-tabbar-item>
       <van-tabbar-item icon="apps-o" to="/fei">分类</van-tabbar-item>
-      <van-tabbar-item icon="shopping-cart-o" to="/shop">购物车</van-tabbar-item>
+      <van-tabbar-item icon="shopping-cart-o" to="/shop"  :badge="this.$store.state.number">购物车</van-tabbar-item>
       <van-tabbar-item icon="contact" to="/person">个人</van-tabbar-item>
     </van-tabbar>
   </div>

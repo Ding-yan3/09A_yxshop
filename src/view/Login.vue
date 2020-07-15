@@ -34,6 +34,17 @@ export default {
       hid:true
     };
   },
+  //组件内路由守卫，判断用户是否登陆
+  beforeRouteEnter (to, from, next) {
+      //获取用户本地存储的token值，判断是否为空
+      let data = storage.get("09A_user",true);
+      ///已经登陆过，直接跳转到首页
+      if(data != null){
+          next("/");
+      }else{//没有登陆，继续在当前页面停留
+          next();
+      }
+  },
   props: [],
   components: {},
   mounted() {},
@@ -75,6 +86,7 @@ export default {
               user.account=this.mobile
               storage.set("09A_user",user,true)
               this.$toast.success("用户登录成功")
+              this.$router.go(-1)
           })
       }
   }

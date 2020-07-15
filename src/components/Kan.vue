@@ -6,7 +6,7 @@
         <span>砍价列表</span>
       </p>
       <ul>
-        <li @click="tog(item.id)" v-for="(item,index) in dy_List" :key="index">
+        <li v-for="(item,index) in dy_List" :key="index">
           <img :src="item.pic" alt />
           <div>
             <p>{{item.name}}</p>
