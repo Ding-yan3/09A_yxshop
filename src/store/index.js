@@ -10,13 +10,17 @@ let store = new Vuex.Store({
         count:100,
         isLoading:false, //控制正在加载
         number:0,
-        cartList:[]
+        cartList:[],  //购物车列表
+
+        orderList:[], //存储订单商品列表
+        orderInfo:[]
     },
     mutations:{
         //改变loading组件的显示隐藏
         changeLoading(state,bool){
             state.isLoading=bool
         },
+        //添加购物车
         addCart(state,payload){
             state.cartList=payload
         },
@@ -27,6 +31,29 @@ let store = new Vuex.Store({
                 sum+=item.nums
             })
             state.number=sum
+        },
+        setOrderList(state){
+            state.orderList=state.cartList.filter((item)=>{
+                return item.checked==true
+            })
+        },
+        setOrder(state,payload){
+            state.orderInfo=payload
+        },
+        //清空所有数据
+        clear(state){
+            state.cartList=[]
+            store.number=0
+            store.orderInfo=[]
+        }
+    },
+    getters:{
+        total(state){
+            let count=0
+            state.orderList.forEach((item)=>{
+                count+=item.price*item.nums
+            })
+            return count
         }
     },
     plugins: [createPersistedState()]

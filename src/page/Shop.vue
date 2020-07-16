@@ -19,7 +19,7 @@
     <div class="dy-footer">
         <van-checkbox v-model="checked" @click="qx()"/><span>全选</span>
         <p style="color:red">合计:￥{{sum}}</p>
-        <van-button class="dy-btt" type="danger">下单</van-button>
+        <van-button class="dy-btt" type="danger" @click="submit()">下单</van-button>
     </div>
   </div>
 </template>
@@ -52,6 +52,17 @@ export default {
                 item.checked=false
             })
         }
+    },
+    submit(){
+        this.$toast.loading({
+            duration:3000, //持续时间
+            message:"商品准备中...",
+            overlay:true
+        })
+        this.$store.commit("setOrderList")
+        setTimeout(() => {
+            this.$router.push("/order/goods")
+        }, 3000);
     }
   },
   computed:{

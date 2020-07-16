@@ -341,6 +341,7 @@ export default {
   ol{
     display: flex;
     margin-top: 10px;
+    flex-wrap: wrap;
     li{
       border: 0.03rem solid #f5f5f5;
       border-radius: 0.08rem;

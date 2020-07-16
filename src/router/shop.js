@@ -7,6 +7,8 @@ import Detail from '@/components/Fei/Detail.vue'
 import Search from '@/components/Fei/Search.vue'
 import Artical from '@/components/Artical'
 import Renqi from '@/components/Home/Renqi.vue'
+import Goods from '@/components/Shop/Goods.vue'  //商品结算
+import Pay from '@/components/Shop/Order.vue'
 
 //定义一个变量
 const shop=[
@@ -80,6 +82,22 @@ const shop=[
         component:Renqi,
         meta:{
             title:"商品详情"
+        }
+    },
+    {
+        path:"/order/goods",
+        name:"Goods",
+        component:Goods,
+        meta:{
+            title:"商品结算"
+        }
+    },
+    {
+        path:"/order/pay",
+        name:"Pay",
+        component:Pay,
+        meta:{
+            title:"支付"
         }
     }
 ];
