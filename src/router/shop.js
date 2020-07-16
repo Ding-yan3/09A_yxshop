@@ -9,6 +9,8 @@ import Artical from '@/components/Artical'
 import Renqi from '@/components/Home/Renqi.vue'
 import Goods from '@/components/Shop/Goods.vue'  //商品结算
 import Pay from '@/components/Shop/Order.vue'
+//图片懒加载
+import Lazy from '@/components/Study/Lazy.vue'
 
 //定义一个变量
 const shop=[
@@ -98,6 +100,14 @@ const shop=[
         component:Pay,
         meta:{
             title:"支付"
+        }
+    },
+    {
+        path:"/lazy",
+        name:"Lazy",
+        component:Lazy,
+        meta:{
+            title:"图片懒加载"
         }
     }
 ];
