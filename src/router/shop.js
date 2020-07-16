@@ -11,6 +11,8 @@ import Goods from '@/components/Shop/Goods.vue'  //商品结算
 import Pay from '@/components/Shop/Order.vue'
 //图片懒加载
 import Lazy from '@/components/Study/Lazy.vue'
+//瀑布流
+import Full from '@/components/Study/Full.vue'
 
 //定义一个变量
 const shop=[
@@ -108,6 +110,14 @@ const shop=[
         component:Lazy,
         meta:{
             title:"图片懒加载"
+        }
+    },
+    {
+        path:'/full',
+        name:"Full",
+        component:Full,
+        meta:{
+            title:"瀑布流"
         }
     }
 ];
