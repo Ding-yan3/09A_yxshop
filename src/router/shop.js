@@ -13,6 +13,8 @@ import Pay from '@/components/Shop/Order.vue'
 import Lazy from '@/components/Study/Lazy.vue'
 //瀑布流
 import Full from '@/components/Study/Full.vue'
+import Cuteinfo from '@/components/Home/Cuteinfo.vue'
+import Cute from '@/components/Home/Cute.vue'
 
 //定义一个变量
 const shop=[
@@ -118,6 +120,22 @@ const shop=[
         component:Full,
         meta:{
             title:"瀑布流"
+        }
+    },
+    {
+        path:'/kan/cuteInfo',
+        name:"Cuteinfo",
+        component:Cuteinfo,
+        meta:{
+            title:"商品详情"
+        }
+    },
+    {
+        path:'/kan/cute',
+        name:"Cute",
+        component:Cute,
+        meta:{
+            title:"商品详情"
         }
     }
 ];

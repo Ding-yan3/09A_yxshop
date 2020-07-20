@@ -6,7 +6,7 @@
         <span>砍价列表</span>
       </p>
       <ul>
-        <li v-for="(item,index) in dy_List" :key="index">
+        <li v-for="(item,index) in dy_List" :key="index" @click="jump(item.id)">
           <img :src="item.pic" alt />
           <div>
             <p>{{item.name}}</p>
@@ -51,6 +51,15 @@ export default {
       this.$router.push({
         path: "/"
       });
+    },
+    jump(id){
+      // let kjid=0
+      // this.dy_List.forEach((item)=>{
+      //   if(item.goodsId==id){
+      //     kjid=item.id
+      //   }
+      // })
+      this.$router.push("/kan/cuteinfo?id="+id)
     }
   }
 };
