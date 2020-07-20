@@ -4,6 +4,7 @@
     <ul>
       <li class="item" v-for="(item,index) in dy_List" :key="index">
           <img :src="item.pic" alt="">
+          <p>{{index+1}}</p>
       </li>
     </ul>
   </div>
@@ -92,6 +93,11 @@ ul{
         img{
             width: 100%;
             box-shadow: 1px 5px 7px #000;
+        }
+        p{
+            color: red;
+            position: absolute;
+            bottom: 10px;
         }
     }
 }

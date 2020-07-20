@@ -1,9 +1,11 @@
 <template>
   <div>
     <div class="dy-head">
-      <img src="../../static/image/m-1.jpg" alt />
+      <van-uploader v-model="filerList" style="border-radius:50%;">
+        <van-icon name="add-o" size="80" v-show="filerList.length==0"></van-icon>
+      </van-uploader>
       <div>
-        <p>立即登录</p>
+        <p @click="jump()">立即登录</p>
         <p>积分：0</p>
       </div>
       <span>X</span>
@@ -77,12 +79,18 @@
 export default {
   name: "Person",
   data() {
-    return {};
+    return {
+      filerList:[{url:"/static/image/m-1.jpg"}]
+    };
   },
   props: [],
   components: {},
   mounted() {},
-  methods: {}
+  methods: {
+    jump(){
+      this.$router.push({path:'/login'})
+    }
+  }
 };
 </script>
 
@@ -92,13 +100,9 @@ export default {
   background: #c1b18f;
   display: flex;
   position: relative;
-  img {
-    width: 75px;
-    height: 75px;
-    border-radius: 50%;
-    margin-left: 20px;
-    margin-top: 40px;
-  }
+ .van-image__error, .van-image__img, .van-image__loading {
+      border-radius: 50% !important;
+    }
   div {
     color: #fff;
     margin-top: 50px;

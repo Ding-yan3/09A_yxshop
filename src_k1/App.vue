@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import Index from '@/assets/reset.css'
 export default {
   name: 'App',
   data(){
@@ -20,9 +19,6 @@ export default {
       return this.$store.state.isLoading;
     }
   },
-  components:{
-    Index
-  }
 }
 </script>
 
@@ -34,5 +30,10 @@ export default {
   /* text-align: center; */
   color: #2c3e50;
   /* margin-top: 60px; */
+}
+*{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
 </style>
