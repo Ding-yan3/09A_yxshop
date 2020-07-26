@@ -18,7 +18,7 @@
         text="新上线更稳定的付费快递查询接口 ........................"
       />
     </div>
-    <div class="dy-ding">
+    <div class="dy-ding" @click="toggle('/person/order')">
       <van-icon class="dy-p" size="20px" name="description" color="orange"/>
       <p>我的订单</p>
       <van-icon class="dy-p1" size="15" name="arrow" />
@@ -89,6 +89,11 @@ export default {
   methods: {
     jump(){
       this.$router.push({path:'/login'})
+    },
+    toggle(url){
+      this.$router.push({
+        path:url
+      })
     }
   }
 };

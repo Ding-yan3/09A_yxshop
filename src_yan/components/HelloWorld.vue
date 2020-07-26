@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <button @click="jump()">注册</button>
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ul>
@@ -89,6 +90,13 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  methods:{
+    jump(){
+      this.$router.push({
+        path:'/register'
+      })
     }
   }
 }

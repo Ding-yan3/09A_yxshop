@@ -6,13 +6,10 @@ import router from './router'
 import axios from 'axios'
 import store from './store'
 import Loading from '@/components/Loading'
-// import Vant from 'vant';
-// import 'vant/lib/index.css';
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+import Vant from 'vant';
+import 'vant/lib/index.css';
 
-// Vue.use(Vant);
-Vue.use(ElementUI);
+Vue.use(Vant);
 
 
 //绑定axios
@@ -41,6 +38,7 @@ Vue.directive("jump",(el,{ value },vnode,oldNode)=>{
     })
   }
 })
+
 
 
 
@@ -75,7 +73,7 @@ axios.interceptors.response.use(
   }
 );
 
-Vue.config.productionTip = false
+
 
 /* eslint-disable no-new */
 new Vue({

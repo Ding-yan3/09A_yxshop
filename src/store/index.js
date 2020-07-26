@@ -9,51 +9,48 @@ let store = new Vuex.Store({
     state:{
         count:100,
         isLoading:false, //控制正在加载
-        number:0,
-        cartList:[],  //购物车列表
-
-        orderList:[], //存储订单商品列表
-        orderInfo:[]
+        user:"",
+        cartList:[],
+        person:"",
+        ShopList:[]
     },
     mutations:{
         //改变loading组件的显示隐藏
         changeLoading(state,bool){
             state.isLoading=bool
         },
-        //添加购物车
-        addCart(state,payload){
-            state.cartList=payload
+        logout(state){
+            state.user=""
         },
-        //购物车数量
-        countCarts(state){
-            let sum=0
-            state.cartList.forEach((item)=>{
-                sum+=item.nums
+        login(state,payload){
+            state.user=payload
+        },
+        addCart(state,data){
+            let dy_index=state.cartList.findIndex((item)=>{
+                return item._id==data._id
             })
-            state.number=sum
+            // console.log(dy_index)
+            if(dy_index>-1){
+                state.cartList[dy_index].number++
+            }else{
+                // data.number=1
+                // data.checked=true
+                Vue.set(data,"number",1)
+                Vue.set(data,"checked",true)
+                state.cartList.push(data)
+            }
+            
         },
-        setOrderList(state){
-            state.orderList=state.cartList.filter((item)=>{
-                return item.checked==true
-            })
+        subCart(state,data){
+            state.cartList=data
         },
-        setOrder(state,payload){
-            state.orderInfo=payload
+        delCart(state,index){
+            state.cartList.splice(index,1)
         },
-        //清空所有数据
-        clear(state){
-            state.cartList=[]
-            store.number=0
-            store.orderInfo=[]
-        }
-    },
-    getters:{
-        total(state){
-            let count=0
-            state.orderList.forEach((item)=>{
-                count+=item.price*item.nums
-            })
-            return count
+        //第二次
+        addShop(state,data){
+            // console.log(data)
+            
         }
     },
     plugins: [createPersistedState()]

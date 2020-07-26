@@ -1,13 +1,11 @@
 <template>
   <div id="app">
-    <!-- <img src="./assets/logo.png"> -->
     <router-view/>
     <Loading v-if="isLoading"></Loading>
   </div>
 </template>
 
 <script>
-import Index from '@/assets/reset.css'
 export default {
   name: 'App',
   data(){
@@ -20,9 +18,7 @@ export default {
       return this.$store.state.isLoading;
     }
   },
-  components:{
-    Index
-  }
+  
 }
 </script>
 
@@ -39,5 +35,8 @@ export default {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+html,body{
+  height: 100%;
 }
 </style>
